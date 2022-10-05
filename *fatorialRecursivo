@@ -1,0 +1,42 @@
+.data
+	string1: .asciiz "Digite um numero"
+.text
+main:
+	li $a0, 5
+	syscall
+	
+	jal Fat
+	
+	move $a0, $v0
+	li $v0, 1
+	syscall
+	
+	Sair
+	
+Fat:
+	addi $sp, $sp, -8
+	sw $a0, 4($sp)
+	sw $ra, 8($sp)
+	
+	slti $t0, $a0, 1
+	beq $t0, $zero, L1
+	
+	li $v0, 1
+	addi $sp, $sp, 8
+	jr $ra
+	
+L1:
+	addi $a0, $a0, -1
+	jal Fat
+	
+	lw $a0, 4($sp)
+	lw $ra, 8($sp)
+	addi $sp, $sp, 8
+	
+	mul $v0, $v0, $a0
+	
+	jr $ra
+	
+Sair:	
+	li $v0, 10
+	syscall
