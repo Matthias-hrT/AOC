@@ -1,0 +1,26 @@
+
+
+============//==========//==========//==========//==========
+
+		
+		Adição e subtração de ponto flutuante
+
+Para se Somar ou Subtrair dois números representados em Ponto Flutuante no Padrão IBM Não Normalizado, 
+devemos primeiramente igualar os expoentes dos dois números.
+
+Para ajustarmos o Expoente, devemos sempre somar a quantidade desejada e movermos a vírgula na Mantissa. 
+O Expoente final é a soma do Expoente inicial ( E0  ) com a potência resultante da soma das Mantissas ( pm ).
+
+A Mantissa pode necessitar também de ajustes, mas esses ajustes são somente de quantidade de bits. 
+Caso a quantidade de bits de uma Mantissa seja maior que a da outra, devemos completar com ZEROS no final.
+
+============//==========//==========//==========//==========
+
+		Overflow com ponto flutuante
+
+O overflow ocorre quando o hardware não é capaz de representar
+os números que normalmente são resultados de alguma operação aritmética.
+Não da para representar com 32 bits, por o expoente não
+está entre os limites -126 à 127
+
+============//==========//==========//==========//==========
