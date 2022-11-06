@@ -24,3 +24,10 @@ Não da para representar com 32 bits, por o expoente não
 está entre os limites -126 à 127
 
 ============//==========//==========//==========//==========
+
+		Desenhando Caminhos Monociclo
+
+a)add $t0, $t1, $t2 // PC, somador, Memória de instruções, Banco de Registradores, ULA, Banco de Registradores
+b)addi $t0, $t1, 20 // PC, Somador, Memória de instruções, Banco de Registradores, ULA Banco de Registradores
+c) j saida // PC, Memória de Instrução, Somador
+d)beq $t0, $zero, saida // PC, Somador, Memória de Instruções, Extentsor de Sinal, ULA, Somador
