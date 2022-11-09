@@ -1,18 +1,64 @@
+		Ponto Flutuante
 
+Representação de Ponto Flutuante
+● Exemplos:
+− Normalização: Um número na notação de ponto flutuante que
+não possui 0s à esquerda do ponto decimal.
+− Notação científica: Uma notação que apresenta números com
+um único dígito à esquerda do ponto decimal.
+
+S: Sinal + ou -
+− F: Fração (Mantissa)
+− E: Expoente (Polarizado)
+− B: Base
+
+Polarizado?
+● O Intervalo de valor do expoente 0 - 255.
+● Porém a polarização subtrai do expoente o valor 127
+− Porque polarizar? Para não haver necessidade de representar expoentes negativos.
+● Intervalo verdadeiro: De -127 a +128.
+
+1.6328125 x 2^20
+
+0.6328125 x 2 = 1.2656250 , portanto primeira casa fracionária é 1
+(1-1.2656250 ) = 0.2656250 x 2 = 0.5312500
+0.5312500 = casa fracionária = 0 →0 – 0.5312500
+0.5312500 * 2 = 1.0625000 casa fracionária = 1 – 1.0625000 = 0.0625000
+ 0.0625000 * 2 = 0.125 → 0 → 0.125 – 0 * 2 = 0.25
+0,25 = 0 → 0.25 – 0 = 0.25 * 2 = 0.5
+0.5 = 0 → 0.5 – 0 = 0.5 * 2 = 1.0
+1.0 = 1 → 1.0 – 1 = 0(acabou)
+R: 1010001 = 0,6328125
+
+Exemplos:
+− 1.6328125 x 2
+20 = + 1.1010001 x 210100
+
+● Agora devemos encontrar o expoente
+− Para isso devemos polarizar o seu valor
+● 10100 = 20
+● 20+127 = 147
+● 147-127 = 20
+● Portanto 147 é o valor polarizado
+10010011
+
+exemplo representação: − 1.6328125 x = + 1.1010001 x 2^10100 = 0 10010011 10100010000000000000000
+
+ Exemplo:
+Normalizar 25,5
+25,5/2 = 12,75
+12,75/2 = 6,375
+6,375/2 = 3,1875
+3,1875/2 = 1,59375
+● 4 divisões
+1,59375 x 2^4 (25,5 normalizado)
 
 ============//==========//==========//==========//==========
 
 		
 		Adição e subtração de ponto flutuante
 
-Para se Somar ou Subtrair dois números representados em Ponto Flutuante no Padrão IBM Não Normalizado, 
-devemos primeiramente igualar os expoentes dos dois números.
-
-Para ajustarmos o Expoente, devemos sempre somar a quantidade desejada e movermos a vírgula na Mantissa. 
-O Expoente final é a soma do Expoente inicial ( E0  ) com a potência resultante da soma das Mantissas ( pm ).
-
-A Mantissa pode necessitar também de ajustes, mas esses ajustes são somente de quantidade de bits. 
-Caso a quantidade de bits de uma Mantissa seja maior que a da outra, devemos completar com ZEROS no final.
+Quando for uma operaçãod e subtração a primeira coisa a fazer é alterar o sinal do subtraendo. Em seguida se algum dos números for 0, outro é informado como resultado. Após isso devemos fazer com que os expoentes de ambos os números sejam iguais, devemos deslocar repetidamente a parte de magnitude da mantissa 1 dígito para a direita, até que os dois expoentes estejam iguais. Logo após, somamos as mantissas, podendo obter resultado 0, overflow na mantissa ou no expoente. Para finalizar, normalizamos o resultado, deslocamos a mantissa para a esquerda até que o dígito mais significatido não seja 0 e a cada deslocamento realizamos um decremento do expoente. Após terminar todos esses passos arredondamos o número e obtemos o resultado.
 
 ============//==========//==========//==========//==========
 
@@ -22,6 +68,13 @@ O overflow ocorre quando o hardware não é capaz de representar
 os números que normalmente são resultados de alguma operação aritmética.
 Não da para representar com 32 bits, por o expoente não
 está entre os limites -126 à 127
+
+Adição (Overflow)
+ Overflow:
+− Situação em que dois números com o mesmo sinal forem somados
+e o seu resultado:
+− Possuir sinal oposto
+− Possuir maior quantidade de bits
 
 ============//==========//==========//==========//==========
 
